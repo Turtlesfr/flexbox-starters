@@ -1,0 +1,64 @@
+// nav-mobile-menu.scss
+
+@import 'reset';
+@import 'common';
+
+html,body
+{
+	font-family: 'Open Sans', sans-serif;
+}
+
+.navigation {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	align-items: stretch;
+	font-size: 0.9em;
+}
+.navigation
+{
+	background-color: MediumSeaGreen;
+}
+.navigation a
+{
+	display: block;
+	text-decoration: none;
+	background-color: MediumSeaGreen;
+	color: white;
+	padding: 10px 15px;
+	-webkit-transition: background-color 0.3s; /* Safari */
+	transition: background-color 0.3s;
+}
+.navigation a:hover
+{
+	background-color: SeaGreen;
+}
+@media all and (max-width: 800px) 
+{
+	.navigation {
+		justify-content: space-evenly;
+	}
+	.navigation li
+	{
+		flex-grow: 1;
+		text-align: center;
+	}
+	.navigation a
+	{
+		border-left: 1px solid SeaGreen;
+	}
+	.navigation li:first-child a
+	{
+		border-left: none;
+	}
+	}
+@media all and (max-width: 500px) 
+{
+	.navigation {
+		flex-direction: column;
+	}
+	.navigation a
+	{
+		border-bottom: 1px solid SeaGreen;
+	}
+}

@@ -1,0 +1,175 @@
+// nav-mobile-menu.scss
+
+@import 'reset';
+@import 'common';
+
+$primaryColor: MediumSeaGreen;
+$activeColor: SeaGreen;
+$navH: 50px;
+$icoH: $navH/3;
+$icoW: $navH/2.5;
+$icoScale: 80%;
+$icoThickness: 3px; 
+
+@mixin transition($time,$ease)
+{
+	-webkit-transition: $time $ease;
+	-moz-transition: $time $ease;
+	-o-transition: $time $ease;
+	transition: $time $ease;
+}
+@mixin rotate($deg)
+{
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	transform: rotate($deg);
+}
+
+%display-flex
+{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+html,body
+{
+	font-family: 'Open Sans', sans-serif;
+}
+
+.navigation
+{
+	@extend %display-flex;
+	flew-flow: row nowrap;
+	align-items: stretch;
+	li
+	{
+		display: flex;
+		height: $navH;
+		@include transition(.25s, ease-in-out)
+	}
+	a
+	{
+		padding: $navH/3 $navH/2;
+		text-decoration: none;
+		background-color: MediumSeaGreen;
+		color: white;
+		-webkit-transition: background-color 0.3s; /* Safari */
+		transition: background-color 0.3s;
+		
+		&:hover
+		{
+			background-color: SeaGreen;
+		}
+	}
+}
+.hamBait
+{
+	display: none;
+	padding: $navH/3 !important;
+}
+.hamburger
+{
+	cursor: pointer;
+	position: relative;
+	@include rotate(0deg);
+	@include transition(.5s, ease-in-out);
+	cursor: pointer;
+	flex: flex-grow;
+	height: $icoH;
+	width: $icoW;
+	span
+	{
+		position: absolute;
+		height: $icoThickness;
+		width: 80%;
+		background: white;
+		border-radius: 9px;
+		opacity: 1;
+		left: (100%-$icoScale)/2;
+		@include rotate(0deg);
+		@include transition(.25s, ease-in-out);
+		&:nth-child(1)
+		{
+			top: (100%-$icoScale)/2;
+		}
+		&:nth-child(2), &:nth-child(3)
+		{
+			top: 50%;
+		}
+		&:nth-child(4)
+		{
+			top: $icoScale+(100%-$icoScale)/2;
+		}
+	}
+	&.open
+	{
+		span
+		{
+			&:nth-child(1)
+			{
+				top: $icoH/2;
+				width: 0%;
+				left: 50%;
+			}
+			&:nth-child(2)
+			{
+				@include rotate(45deg);
+			}
+			&:nth-child(3)
+			{
+				@include rotate(-45deg);
+			}
+			&:nth-child(4)
+			{
+				top: $icoH/2;
+				width: 0%;
+				left: 50%;
+			}
+		}
+	}	
+}
+@media all and (max-width: 800px) {
+	.navigation {
+		background-color: $primaryColor;
+		justify-content: space-evenly;
+	}
+}
+@media all and (max-width: 600px)
+{
+	.hamBait
+	{
+		display: flex;
+	}
+	.navigation > li:not(:first-child)
+	{
+		display: none;
+		flex: 1 100%;
+	}
+	.navigation a
+	{
+		flex: 1 100%;
+		text-align: center;
+	}
+	.navigation a.hamBait
+	{
+		flex: 0 1 auto;
+	}
+	.navigation
+	{
+		justify-content: space-evenly;
+		flex-direction: column;
+		&.openNav
+		{
+			li
+			{
+				border-top: 1px solid darken($primaryColor, 5);
+				display: flex;
+			}
+		}
+	}
+
+}

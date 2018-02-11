@@ -1,0 +1,21 @@
+https://codepen.io/justd/pen/yydezN/
+
+.container
+{
+	flex-direction: 	row | row-reverse | column | column-reverse						
+	flex-wrap: 			nowrap | wrap | wrap-reverse
+	flex-flow: 			row nowrap | ...		(shorthand for flex-direction and flex-wrap)
+	justify-content: 	flex-start | flex-end | center | space-between | space-around
+	align-items:		stretch | flex-start | flex-end | center | baseline
+	align-content: 		stretch | flex-start | flex-end | center | space-between | space-around
+}
+
+.child
+{
+	order: 				-2 | -1 | 0 | 1 | 2 | ...
+	flex-grow:			0 | 1 | 2 | ...
+	flex-shrink: 		0 | 1 (default) | 2 | ... (0 = no shrink)
+	flex-basis:			auto | 100px | ...
+	flex:				auto | none | 1 1 auto (shorthand for grow, shrink and basis)
+	align-self:			auto | flex-start | flex-end | center | baseline | stretch (overwrite align-items if defined)
+}
